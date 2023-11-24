@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class main {
+public class Main {
     public static void main(String[] args) {
         Scanner variable=new Scanner(System.in);
         System.out.println("SISTEMAS DE NOTAS DE ESTUDIANTES");
