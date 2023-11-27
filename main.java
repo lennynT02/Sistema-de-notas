@@ -1,51 +1,41 @@
+package Sistema_Notas;
+
 import java.util.Scanner;
-public class Main {
+public class main {
     public static void main(String[] args) {
         Scanner variable=new Scanner(System.in);
+        Scanner variable1=new Scanner(System.in);
+        Scanner variable2=new Scanner(System.in);
         System.out.println("SISTEMAS DE NOTAS DE ESTUDIANTES");
-
-        String nombre;
-        Notas minota1;
-        Notas minota2;
-        Notas minota3;
-        Notas minota4;
-        Notas minota5;
-
-        System.out.println("Escribe tu nombre");
-        minota1=new Notas(nombre=variable.nextLine());
-        minota2=new Notas("Samanta");
-        minota3=new Notas("Ximena");
-        minota4=new Notas("Kelyn");
-        minota5=new Notas("Samira");
-        //  nombre=variable.nextLine();
-
-        System.out.println("Escribe tu Apellido");
-        minota1.setApellido(nombre=variable.nextLine());
-        minota2.setApellido("Torres");
-        minota3.setApellido("Guayanay");
-        minota4.setApellido("Guayanay");
-        minota5.setApellido("Guayanay");
-
-
-        System.out.println("Escribe tu Nota del primer Bimestre");
-        minota1.setNota1Bimestre(nombre=variable.nextLine());
-        minota2.setNota1Bimestre("8");
-        minota3.setNota1Bimestre("8");
-        minota4.setNota1Bimestre("8");
-        minota5.setNota1Bimestre("8");
-
-        System.out.println("Escribe tu Nota del segundo Bimestre");
-        minota1.setNota2Bimestre(nombre=variable.nextLine());
-        minota2.setNota2Bimestre("5");
-        minota3.setNota2Bimestre("5");
-        minota4.setNota2Bimestre("5");
-        minota5.setNota2Bimestre("5");
-
-
-        //obtener los valores de cada atributos
-
-        System.out.println("SISTEMAS DE NOTAS ....................");
-        System.out.println("Nombre: "+minota1.getNombre()+"\n"+"Apellido: "+minota1.getApellido()+"\n"+"Nota 1 Bimestre: "+minota1.getNota1Bimestre()+"\n"+"Nota 2 Bimestre: "+minota1.getNota2Bimestre()+"\n");
-
+        int n=1;
+        String pase="Aprobado";
+        System.out.println("Cuantos alumnos va a ingresar: ");n=variable.nextInt();
+        Notas[] estudiantes = new Notas[n];
+        for (int i=0;i<estudiantes.length;i++){
+            float Notab1=0,Notab2=0;
+            System.out.println("Escribe tu nombre");
+            estudiantes[i] = new Notas(variable2.nextLine());
+            System.out.println("Escribe tu Apellido");
+            estudiantes[i].setApellido(variable1.nextLine());
+            System.out.println("Escribe tus 10 Notas del primer Bimestre");
+            for (int j =0;j<10;j++){
+                System.out.println("Ingresa tu NOTA "+(j+1));
+                Notab1+=variable.nextInt();
+            }
+            estudiantes[i].setNota1Bimestre((Notab1/10));
+            System.out.println(estudiantes[i].getNota1Bimestre());
+            System.out.println("Escribe tus 10 Notas del segundo Bimestre");
+            for (int h =0;h<10;h++){
+                System.out.println("Ingresa tu NOTA "+(h+1));
+                Notab2+=variable.nextInt();
+            }
+            estudiantes[i].setNota2Bimestre((Notab2/10));
+        }
+        System.out.println("SISTEMAS DE NOTAS ....................\n");
+        for (int i =0;i<estudiantes.length;i++){
+            if ((estudiantes[i].getNota1Bimestre()+estudiantes[i].getNota2Bimestre())<14)
+                pase="No aprobado";
+            System.out.println(estudiantes[i].getNombre()+" \t"+estudiantes[i].getApellido()+" \t"+estudiantes[i].getNota1Bimestre()+" \t"+estudiantes[i].getNota2Bimestre()+" \t"+pase);
+        }
     }
 }
